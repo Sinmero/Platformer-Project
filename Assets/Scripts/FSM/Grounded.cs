@@ -50,7 +50,7 @@ public class Grounded : State
         if (Input.GetKey(Controls.keys._left))
         {
             _moveVector.x = -1 * _playerController._moveSpeed;
-            // _moveVector.y = _rb.velocity.y;
+            _moveVector.y = _rb.velocity.y;
             _rb.velocity = _moveVector;
 
             if (!_spriteRenderer.flipX) _spriteRenderer.flipX = true;
@@ -59,7 +59,7 @@ public class Grounded : State
         if (Input.GetKey(Controls.keys._right))
         {
             _moveVector.x = _playerController._moveSpeed;
-            // _moveVector.y = _rb.velocity.y;
+            _moveVector.y = _rb.velocity.y;
             _rb.velocity = _moveVector;
 
             if (_spriteRenderer.flipX) _spriteRenderer.flipX = false;
