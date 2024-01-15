@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Falling : InAir
 {
     private LayerMask _layerMask;
     private Vector2 _colliderSize = new Vector2(0, 0);
     private CapsuleCollider2D _capsuleCollider2D;
+    public Action<RaycastHit2D> OnLanded;
 
     public Falling(StateMachineHandler stateMachineHandler) : base(stateMachineHandler) { 
         _layerMask = LayerMask.GetMask("Solid");
@@ -32,6 +34,7 @@ public class Falling : InAir
 
         if (collisions.Length > 0)
         {
+            OnLanded(collisions[0]);
             PhysicsLogger.instance.Log($"Landed on {collisions[0].transform.name}", _playerController);
             _stateMachineHandler.ChangeState(_playerController._idle); //changing state to grounded when colliding with solid object with out bottom
         }

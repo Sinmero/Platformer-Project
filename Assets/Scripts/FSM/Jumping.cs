@@ -5,7 +5,7 @@ using UnityEngine;
 public class Jumping : InAir
 {
     private bool _releasedJump = false;
-    private float lowJumpMulti = 5f;
+    private float lowJumpMulti = 4f;
     public Jumping(StateMachineHandler stateMachineHandler) : base(stateMachineHandler) { }
 
 
@@ -31,7 +31,6 @@ public class Jumping : InAir
     public override void OnStateLeave()
     {
         base.OnStateLeave();
-        GameplayLogger.instance.Log(Physics2D.gravity.y, _playerController);
         _releasedJump = false;
     }
 
@@ -41,6 +40,7 @@ public class Jumping : InAir
     {
         if (_releasedJump)
         {
+            _moveVector.y = _rb.velocity.y;
             _moveVector += Vector2.up * Physics2D.gravity.y * (lowJumpMulti - 1) * Time.deltaTime;
             _moveVector.x = _rb.velocity.x;
             _rb.velocity = _moveVector;

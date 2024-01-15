@@ -11,6 +11,10 @@ public class PlayerController : StateMachineHandler
     [HideInInspector] public Idle _idle;
     [HideInInspector] public Moving _moving;
     [HideInInspector] public Jumping _jumping;
+    [HideInInspector] public DoubleJump _doubleJump;
+    [HideInInspector] public Dashing _dashing;
+    
+
 
 
 
@@ -20,6 +24,11 @@ public class PlayerController : StateMachineHandler
         _idle = new Idle(this);
         _moving = new Moving(this);
         _jumping = new Jumping(this);
+
+        _doubleJump = new DoubleJump(this);
+        _dashing = new Dashing(this);
+
+
         ChangeState(_idle);
     }
 }

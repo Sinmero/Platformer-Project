@@ -8,6 +8,7 @@ public class InAir : State
     public PlayerController _playerController;
     public Rigidbody2D _rb;
     private SpriteRenderer _spriteRenderer;
+    public delegate void OnExecute();
 
 
     public InAir(StateMachineHandler stateMachineHandler) : base(stateMachineHandler)
@@ -29,14 +30,13 @@ public class InAir : State
     public override void Execute()
     {
         base.Execute();
-
         if (Input.GetKey(Controls.keys._left))
         {
             _moveVector.y = _rb.velocity.y;
             _moveVector.x = -1 * _playerController._moveSpeed;
             _rb.velocity = _moveVector;
 
-            if(!_spriteRenderer.flipX) _spriteRenderer.flipX = true;
+            if (!_spriteRenderer.flipX) _spriteRenderer.flipX = true;
         }
         if (Input.GetKey(Controls.keys._right))
         {
@@ -44,7 +44,16 @@ public class InAir : State
             _moveVector.x = _playerController._moveSpeed;
             _rb.velocity = _moveVector;
 
-            if(_spriteRenderer.flipX) _spriteRenderer.flipX = false;
+            if (_spriteRenderer.flipX) _spriteRenderer.flipX = false;
+        }
+        if (Input.GetKeyDown(Controls.keys._jump))
+        {
+            _playerController.ChangeState(_playerController._doubleJump);
+        }
+        if (Input.GetKeyDown(Controls.keys._dash))
+        {
+            _playerController.ChangeState(_playerController._dashing);
+
         }
     }
 
