@@ -49,7 +49,10 @@ public class Dashing : State
     public override void OnStateEnter()
     {
         base.OnStateEnter();
-        if (_totalDashes <= 0) return;
+        if (_totalDashes <= 0) {
+            _playerController.ChangeState(_playerController._falling);
+            return;
+        }
         Debug.Log(_playerController._currentState);
         GameSystems.instance.CoroutineStart(_dashing, 0.2f, _afterDashing);
         _totalDashes -= 1;
