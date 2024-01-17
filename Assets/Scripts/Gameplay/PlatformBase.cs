@@ -23,4 +23,8 @@ public abstract class PlatformBase : MonoBehaviour
     public virtual void OnDisable() {
         _boxCollider2D.enabled = false;
     }
+
+
+
+    public virtual void OnLanded(State state){}
 }

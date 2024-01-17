@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoubleJump : Jumping
 {
-    public int _totalJumps = 1;
+    public int _totalJumps = 0;
 
 
     public DoubleJump (StateMachineHandler stateMachineHandler) : base(stateMachineHandler) {
@@ -34,6 +34,9 @@ public class DoubleJump : Jumping
 
 
     public void OnLanded(RaycastHit2D raycastHit2D) {
+        var greenPlatform = raycastHit2D.transform.GetComponent<PlatformBaseGreen>();
+        _totalJumps = 0;
+        if(greenPlatform == null) return; //only reset jump ability when player lands on a green platform
         _totalJumps = 1;
     }
 }

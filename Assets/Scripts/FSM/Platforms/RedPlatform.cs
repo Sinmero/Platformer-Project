@@ -12,7 +12,7 @@ public class RedPlatform : State
     {
         _platformController = _stateMachineHandler as PlatformController;
     }
-        
+
 
 
     public override void OnStateEnter()
@@ -20,7 +20,11 @@ public class RedPlatform : State
         base.OnStateEnter();
         onEnable?.Invoke();
         GameplayLogger.instance.Log($"Red activated", _platformController);
+        GlobalMaterials.instance.ClearCoroutines();
         ActivateColor();
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Blue", 0.3f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Green", 0.3f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Red", 1f);
     }
 
 
@@ -49,13 +53,15 @@ public class RedPlatform : State
 
 
 
-        private void ActivateColor() {
-        GlobalMaterials.instance._red.SetFloat("_OutlineTransition", 0);
+    private void ActivateColor()
+    {
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._red, "_OutlineTransition", 0, false, 0.2f);
     }
 
 
 
-    private void DeactivateColor(){
-        GlobalMaterials.instance._red.SetFloat("_OutlineTransition", 1);
+    private void DeactivateColor()
+    {
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._red, "_OutlineTransition", 1, false, 0.2f);
     }
 }

@@ -9,7 +9,7 @@ public class Dashing : State
     public Rigidbody2D _rb;
     public SpriteRenderer _spriteRenderer;
     public Vector2 _moveVector = new Vector2(0, 0);
-    public int _totalDashes = 1;
+    public int _totalDashes = 0;
     public Action
     _dashing,
     _afterDashing;
@@ -62,6 +62,9 @@ public class Dashing : State
 
     public void OnLanded(RaycastHit2D raycastHit2D)
     {
+        var redPlatform = raycastHit2D.transform.GetComponent<PlatformBaseRed>();
+        _totalDashes = 0;
+        if(redPlatform == null) return; //only reset dash ability when player lands on a green platform
         _totalDashes = 1;
     }
 }

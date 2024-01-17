@@ -42,10 +42,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blue: 1
-    - _Green: 1
+    - _Green: 0.5
     - _Hue: 0
-    - _Red: 1
-    - _ShiftSlide: 0.03
+    - _Red: 0.4
+    - _ShiftSlide: 0.14
     m_Colors: []
   m_BuildTextureStacks: []
 --- !u!114 &3117995095689756791

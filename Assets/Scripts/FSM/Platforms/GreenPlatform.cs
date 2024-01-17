@@ -20,7 +20,11 @@ public class GreenPlatform : State
         base.OnStateEnter();
         onEnable?.Invoke();
         GameplayLogger.instance.Log($"Green activated", _platformController);
+        GlobalMaterials.instance.ClearCoroutines();
         ActivateColor();
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Red", 0.3f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Blue", 0.3f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Green", 1f);
     }
 
 
@@ -50,12 +54,12 @@ public class GreenPlatform : State
 
 
     private void ActivateColor() {
-        GlobalMaterials.instance._green.SetFloat("_OutlineTransition", 0);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._green, "_OutlineTransition", 0, false, 0.2f);
     }
 
 
 
     private void DeactivateColor(){
-        GlobalMaterials.instance._green.SetFloat("_OutlineTransition", 1);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._green, "_OutlineTransition", 1, false, 0.2f);
     }
 }

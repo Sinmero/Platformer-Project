@@ -21,7 +21,11 @@ public class BluePlatform : State
         base.OnStateEnter();
         onEnable?.Invoke();
         GameplayLogger.instance.Log($"Blue activated", _platformController);
+        GlobalMaterials.instance.ClearCoroutines();
         ActivateColor();
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Red", 0.4f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Green", 0.5f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Blue", 1f);
     }
 
 
@@ -51,12 +55,12 @@ public class BluePlatform : State
 
 
     private void ActivateColor() {
-        GlobalMaterials.instance._blue.SetFloat("_OutlineTransition", 0);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._blue, "_OutlineTransition", 0, false, 0.2f);
     }
 
 
 
     private void DeactivateColor(){
-        GlobalMaterials.instance._blue.SetFloat("_OutlineTransition", 1);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._blue, "_OutlineTransition", 1, false, 0.2f);
     }
 }
