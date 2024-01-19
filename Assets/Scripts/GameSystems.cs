@@ -12,6 +12,8 @@ public class GameSystems : MonoBehaviour
 
     void Awake()
     {
+        Screen.SetResolution(1920, 1080, false);
+
         if(_gameSystems != null && this == _gameSystems) {
             Destroy(this);
         } else {

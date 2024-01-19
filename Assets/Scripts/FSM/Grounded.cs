@@ -68,10 +68,12 @@ public class Grounded : State
         if (Input.GetKeyUp(Controls.keys._left))
         {
             _moveVector.x = 0;
+            _rb.velocity = _moveVector;
         }
         if (Input.GetKeyUp(Controls.keys._right))
         {
             _moveVector.x = 0;
+            _rb.velocity = _moveVector;
         }
         BoxCast();
     }

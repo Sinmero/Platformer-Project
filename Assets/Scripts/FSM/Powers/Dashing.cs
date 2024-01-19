@@ -53,7 +53,6 @@ public class Dashing : State
             _playerController.ChangeState(_playerController._falling);
             return;
         }
-        Debug.Log(_playerController._currentState);
         GameSystems.instance.CoroutineStart(_dashing, 0.2f, _afterDashing);
         _totalDashes -= 1;
     }
