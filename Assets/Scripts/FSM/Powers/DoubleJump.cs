@@ -6,17 +6,27 @@ public class DoubleJump : Jumping
 {
     public int _totalJumps = 0;
 
+    private AudioClip _audioClipOnEnter;
+    private AudioClip _audioClipOnExit;
+    private AudioClip _audioClipAux;
 
-    public DoubleJump (StateMachineHandler stateMachineHandler) : base(stateMachineHandler) {
+    public DoubleJump (StateMachineHandler stateMachineHandler, AudioClip audioOnEnter = null, AudioClip audioOnExit = null, AudioClip audioAuxClip = null) : base(stateMachineHandler) {
         _playerController._falling.OnLanded += OnLanded;
+        
+        _audioClipOnEnter = audioOnEnter;
+        _audioClipOnExit = audioOnExit;
+        _audioClipAux = audioAuxClip;
+        
     }
 
 
 
     public override void OnStateEnter()
     {
+        
         base.OnStateEnter();
         if(_totalJumps <= 0) return;
+        AudioManager.instance.PlaySoundClip(_audioClipOnEnter);
         _moveVector.y = 0;
         _moveVector.x = _rb.velocity.x;
         _rb.velocity = _moveVector;
@@ -37,6 +47,7 @@ public class DoubleJump : Jumping
         var greenPlatform = raycastHit2D.transform.GetComponent<PlatformBaseGreen>();
         _totalJumps = 0;
         if(greenPlatform == null) return; //only reset jump ability when player lands on a green platform
+        AudioManager.instance.PlaySoundClip(_audioClipAux);
         _totalJumps = 1;
     }
 }

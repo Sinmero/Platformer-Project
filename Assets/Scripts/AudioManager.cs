@@ -16,14 +16,20 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySoundClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    public void PlaySoundClip(AudioClip audioClip, float volume = 1.0f)
     {
-        AudioSource audioSource = Instantiate(soundObject, spawnTransform.position, Quaternion.identity);
-        audioSource.clip = audioClip;
-        audioSource.volume = volume;
+        Debug.Log(audioClip);
+        if (audioClip != null)
+        {
+            AudioSource audioSource = Instantiate(soundObject);
+            audioSource.clip = audioClip;
+            audioSource.volume = volume;
+            audioSource.Play();
 
-        float clipLength = audioSource.clip.length;
-        Destroy(audioSource.gameObject, clipLength);
+            float clipLength = audioSource.clip.length;
+            Destroy(audioSource.gameObject, clipLength);
+        }
+        
     }
 
 }

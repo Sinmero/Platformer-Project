@@ -11,15 +11,21 @@ public class LowGravity : State
     _gravScale,
     _initialJumpForce;
 
+    private AudioClip _audioClipOnEnter;
+    private AudioClip _audioClipOnExit;
+    private AudioClip _audioClipAux;
 
-
-    public LowGravity(StateMachineHandler stateMachineHandler) : base(stateMachineHandler){
+    public LowGravity(StateMachineHandler stateMachineHandler, AudioClip audioOnEnter = null, AudioClip audioOnExit = null, AudioClip audioAuxClip = null) : base(stateMachineHandler){
         _playercontroller = stateMachineHandler as PlayerController;
         _rb = _playercontroller .GetComponent<Rigidbody2D>();
         _gravScale = _rb.gravityScale;
         _initialJumpForce = _playercontroller._jumpForce;
         _playercontroller._falling.OnLanded += OnLanded;
         _playercontroller.onExecute += OnLowGrav;
+
+        _audioClipOnEnter = audioOnEnter;
+        _audioClipOnExit = audioOnExit;
+        _audioClipAux = audioAuxClip;
     }
 
 
