@@ -22,6 +22,7 @@ public class DoubleJump : Jumping
         _rb.velocity = _moveVector;
         _rb.AddForce(Vector2.up * _playerController._jumpForce, ForceMode2D.Impulse);
         _totalJumps -= 1;
+        _playerController._doubleJumpParticles.Play();
     }
 
 
@@ -29,6 +30,14 @@ public class DoubleJump : Jumping
     {
         base.Execute();
         
+    }
+
+
+
+    public override void OnStateLeave()
+    {
+        base.OnStateLeave();
+        _playerController._doubleJumpParticles.Stop();
     }
 
 

@@ -30,6 +30,8 @@ public class Dashing : State
 
             if (_spriteRenderer.flipX) dir = -1; //dashing in the direction the sprite is facing
 
+            GlobalMaterials.instance._dashing.SetInt("_Flip", Convert.ToInt32(_spriteRenderer.flipX));
+
             _moveVector.x = dir;
             _rb.gravityScale = 0;
 
@@ -53,8 +55,17 @@ public class Dashing : State
             _playerController.ChangeState(_playerController._falling);
             return;
         }
+        _playerController._dashingParticles.Play();
         GameSystems.instance.CoroutineStart(_dashing, 0.2f, _afterDashing);
         _totalDashes -= 1;
+    }
+
+
+
+    public override void OnStateLeave()
+    {
+        base.OnStateLeave();
+        _playerController._dashingParticles.Stop();
     }
 
 

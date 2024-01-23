@@ -55,12 +55,12 @@ public class BluePlatform : State
 
 
     private void ActivateColor() {
-        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._blue, "_OutlineTransition", 0, false, 0.2f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._bluePlatform, "_OutlineTransition", 0, false, 0.2f);
     }
 
 
 
     private void DeactivateColor(){
-        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._blue, "_OutlineTransition", 1, false, 0.2f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._bluePlatform, "_OutlineTransition", 1, false, 0.2f);
     }
 }

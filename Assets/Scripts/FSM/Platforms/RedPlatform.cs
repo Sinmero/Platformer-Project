@@ -55,13 +55,13 @@ public class RedPlatform : State
 
     private void ActivateColor()
     {
-        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._red, "_OutlineTransition", 0, false, 0.2f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._redPlatform, "_OutlineTransition", 0, false, 0.2f);
     }
 
 
 
     private void DeactivateColor()
     {
-        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._red, "_OutlineTransition", 1, false, 0.2f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._redPlatform, "_OutlineTransition", 1, false, 0.2f);
     }
 }

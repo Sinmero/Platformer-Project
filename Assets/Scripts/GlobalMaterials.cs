@@ -7,10 +7,15 @@ public class GlobalMaterials : MonoBehaviour
     private static GlobalMaterials _globalMaterials;
     public static GlobalMaterials instance { get { return _globalMaterials; } }
     public Material
-    _red,
-    _green,
-    _blue,
-    _colorSplitter;
+    _redPlatform,
+    _greenPlatform,
+    _bluePlatform,
+    _colorSplitter,
+    _dashing,
+    _lowGrav,
+    _redGlobal,
+    _greenGlobal,
+    _blueGlobal;
     private List<Coroutine> _coloutineList =  new List<Coroutine>();
 
 
@@ -25,12 +30,17 @@ public class GlobalMaterials : MonoBehaviour
             _globalMaterials = this;
         }
 
-        _blue.SetFloat("_OutlineTransition", 1);
-        _green.SetFloat("_OutlineTransition", 1);
-        _red.SetFloat("_OutlineTransition", 1);
+        //reset all shaders
+
+        _bluePlatform.SetFloat("_OutlineTransition", 1);
+        _greenPlatform.SetFloat("_OutlineTransition", 1);
+        _redPlatform.SetFloat("_OutlineTransition", 1);
         _colorSplitter.SetFloat("_Red", 0);
         _colorSplitter.SetFloat("_Green", 0);
         _colorSplitter.SetFloat("_Blue", 0);
+        _redGlobal.SetFloat("_ShiftSlider", 0);
+        _blueGlobal.SetFloat("_ShiftSlider", 0);
+        _greenGlobal.SetFloat("_ShiftSlider", 0);
     }
 
 
@@ -66,10 +76,5 @@ public class GlobalMaterials : MonoBehaviour
             StopCoroutine(_coloutineList[0]);
             _coloutineList.Remove(_coloutineList[0]);
         }
-
-        // foreach(var obj in _coloutineList) {
-        //     StopCoroutine(obj);
-        //     _coloutineList.Remove(obj);
-        // }
      }
 }

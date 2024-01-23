@@ -19,6 +19,11 @@ public class PlayerController : StateMachineHandler
     public List<Sprite> _idleAnimation = new List<Sprite>();
     public List<Sprite> _runningAnimation = new List<Sprite>();
     public List<Sprite> _jumpingAnimation = new List<Sprite>();
+
+    public ParticleSystem 
+    _dashingParticles,
+    _doubleJumpParticles,
+    _lowGravParticles;
     
     public delegate void OnExecute();
     public event OnExecute onExecute;

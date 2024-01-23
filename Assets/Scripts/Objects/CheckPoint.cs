@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckPoint : Interactable
+public class CheckPoint : NPC
 {
     public override void OnInteract(Interactor interactor)
     {

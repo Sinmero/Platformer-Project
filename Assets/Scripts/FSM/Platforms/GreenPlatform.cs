@@ -54,12 +54,12 @@ public class GreenPlatform : State
 
 
     private void ActivateColor() {
-        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._green, "_OutlineTransition", 0, false, 0.2f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._greenPlatform, "_OutlineTransition", 0, false, 0.2f);
     }
 
 
 
     private void DeactivateColor(){
-        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._green, "_OutlineTransition", 1, false, 0.2f);
+        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._greenPlatform, "_OutlineTransition", 1, false, 0.2f);
     }
 }
