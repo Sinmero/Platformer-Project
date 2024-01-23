@@ -13,7 +13,7 @@ public class Jumping : InAir
     public Jumping(StateMachineHandler stateMachineHandler, AudioClip audioOnEnter = null, AudioClip audioOnExit = null) : base(stateMachineHandler) {
         _audioClipOnEnter = audioOnEnter;
         _audioClipOnExit = audioOnExit;
-        Debug.Log(_audioClipOnEnter);
+        
     }
 
 
@@ -42,7 +42,6 @@ public class Jumping : InAir
 
     public override void OnStateLeave()
     {
-        AudioManager.instance.PlaySoundClip(_audioClipOnExit);
         base.OnStateLeave();
         _releasedJump = false;
     }

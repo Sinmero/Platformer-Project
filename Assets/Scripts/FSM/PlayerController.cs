@@ -30,7 +30,7 @@ public class PlayerController : StateMachineHandler
 
     void Start()
     {
-        _falling = new Falling(this);
+        _falling = new Falling(this, _audioClips[3]);
         _idle = new Idle(this);
         _moving = new Moving(this);
         _jumping = new Jumping(this, _audioClips[2]);
