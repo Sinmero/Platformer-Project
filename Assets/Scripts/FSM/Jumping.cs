@@ -36,6 +36,7 @@ public class Jumping : InAir
 
     public override void OnStateEnter()
     {
+        base.OnStateEnter();
         AudioManager.instance.PlaySoundClip(_audioClipOnEnter);
     }
 
