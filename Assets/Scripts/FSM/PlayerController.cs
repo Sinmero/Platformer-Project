@@ -19,11 +19,14 @@ public class PlayerController : StateMachineHandler
     public List<Sprite> _idleAnimation = new List<Sprite>();
     public List<Sprite> _runningAnimation = new List<Sprite>();
     public List<Sprite> _jumpingAnimation = new List<Sprite>();
+    public List<AudioClip> _audioClips = new List<AudioClip>();
 
     public ParticleSystem 
     _dashingParticles,
     _doubleJumpParticles,
     _lowGravParticles;
+
+    
     
     public delegate void OnExecute();
     public event OnExecute onExecute;
@@ -34,14 +37,15 @@ public class PlayerController : StateMachineHandler
 
     void Start()
     {
-        _falling = new Falling(this);
+        _falling = new Falling(this, _audioClips[3]);
         _idle = new Idle(this);
         _moving = new Moving(this);
-        _jumping = new Jumping(this);
+        _jumping = new Jumping(this, _audioClips[2]);
 
-        // _doubleJump = new DoubleJump(this);
-        // _dashing = new Dashing(this);
-        // _lowGravity = new LowGravity(this);
+        //_doubleJump = new DoubleJump(this, _audioClips[2], null, _audioClips[4]);
+        //_dashing = new Dashing(this, _audioClips[0], null, _audioClips[4]);
+        //_lowGravity = new LowGravity(this, null, null, _audioClips[4]);
+
 
         _animationMaker = GetComponent<AnimationMaker>();
 

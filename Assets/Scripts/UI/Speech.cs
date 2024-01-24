@@ -96,15 +96,19 @@ public class Speech : MonoBehaviour
             else //handle typing
             {
                 if (Time.time < _pauseTimeout) yield return new WaitForSeconds(_pauseTime); //pause if needed
-
+                
                 thisTextMesh.text += cr;
                 if (_regex.IsMatch(cr.ToString())) //if char is text and not symbol do things
                 {
+
                     if (charCount % 2 == 0 && thisAudioClip != null)
                     {
                         // !!!
                         // soundManager.doPlaySingleSound(interactor.globalAudioSource, thisAudioClip, pitchMin, pitchMax); // !!! handle audio later !!!
                         // !!!
+
+                        AudioManager.instance.PlaySoundClip(thisAudioClip);
+
                     }
                     charCount++;
                 }

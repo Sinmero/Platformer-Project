@@ -6,7 +6,15 @@ public class Jumping : InAir
 {
     private bool _releasedJump = false;
     private float lowJumpMulti = 4f;
-    public Jumping(StateMachineHandler stateMachineHandler) : base(stateMachineHandler) { }
+
+    private AudioClip _audioClipOnEnter;
+    private AudioClip _audioClipOnExit;
+
+    public Jumping(StateMachineHandler stateMachineHandler, AudioClip audioOnEnter = null, AudioClip audioOnExit = null) : base(stateMachineHandler) {
+        _audioClipOnEnter = audioOnEnter;
+        _audioClipOnExit = audioOnExit;
+        
+    }
 
 
 
@@ -26,6 +34,11 @@ public class Jumping : InAir
         }
     }
 
+    public override void OnStateEnter()
+    {
+        base.OnStateEnter();
+        AudioManager.instance.PlaySoundClip(_audioClipOnEnter);
+    }
 
 
     public override void OnStateLeave()

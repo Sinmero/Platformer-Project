@@ -10,11 +10,16 @@ public class Falling : InAir
     private CapsuleCollider2D _capsuleCollider2D;
     public Action<RaycastHit2D> OnLanded;
 
-    public Falling(StateMachineHandler stateMachineHandler) : base(stateMachineHandler) { 
+    private AudioClip _audioClipOnEnter;
+    private AudioClip _audioClipOnExit;
+
+    public Falling(StateMachineHandler stateMachineHandler, AudioClip audioOnEnter = null, AudioClip audioOnExit = null) : base(stateMachineHandler) { 
         _layerMask = LayerMask.GetMask("Solid");
         _capsuleCollider2D = _stateMachineHandler.GetComponent<CapsuleCollider2D>();
         _colliderSize.x = _capsuleCollider2D.size.x * _stateMachineHandler.transform.localScale.x;
         _colliderSize.y = _capsuleCollider2D.size.y * _stateMachineHandler.transform.localScale.y;
+        _audioClipOnEnter = audioOnEnter;
+        _audioClipOnExit = audioOnExit;
     }
 
 
@@ -35,6 +40,7 @@ public class Falling : InAir
         if (collisions.Length > 0)
         {
             OnLanded?.Invoke((collisions[0]));
+            AudioManager.instance.PlaySoundClip(_audioClipOnEnter);
             PhysicsLogger.instance.Log($"Landed on {collisions[0].transform.name}", _playerController);
             _stateMachineHandler.ChangeState(_playerController._idle); //changing state to grounded when colliding with solid object with out bottom
         }

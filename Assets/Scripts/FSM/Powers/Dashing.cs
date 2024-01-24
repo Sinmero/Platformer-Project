@@ -13,12 +13,21 @@ public class Dashing : State
     public Action
     _dashing,
     _afterDashing;
-    public Dashing(StateMachineHandler stateMachineHandler) : base(stateMachineHandler)
+
+    private AudioClip _audioClipOnEnter;
+    private AudioClip _audioClipOnExit;
+    private AudioClip _audioClipAux;
+
+    public Dashing(StateMachineHandler stateMachineHandler, AudioClip audioOnEnter = null, AudioClip audioOnExit = null, AudioClip audioAuxClip = null) : base(stateMachineHandler)
     {
         _playerController = stateMachineHandler as PlayerController;
         _rb = _playerController.GetComponent<Rigidbody2D>();
         _playerController._falling.OnLanded += OnLanded;
         _spriteRenderer = _playerController.GetComponent<SpriteRenderer>();
+
+        _audioClipOnEnter = audioOnEnter;
+        _audioClipOnExit = audioOnExit;
+        _audioClipAux = audioAuxClip;
 
         _dashing = () =>
         {
@@ -50,6 +59,7 @@ public class Dashing : State
 
     public override void OnStateEnter()
     {
+        
         base.OnStateEnter();
         if (_totalDashes <= 0) {
             _playerController.ChangeState(_playerController._falling);
@@ -57,6 +67,7 @@ public class Dashing : State
         }
         _playerController._dashingParticles.Play();
         GameSystems.instance.CoroutineStart(_dashing, 0.2f, _afterDashing);
+        AudioManager.instance.PlaySoundClip(_audioClipOnEnter);
         _totalDashes -= 1;
     }
 
@@ -74,7 +85,8 @@ public class Dashing : State
     {
         var redPlatform = raycastHit2D.transform.GetComponent<PlatformBaseRed>();
         _totalDashes = 0;
-        if(redPlatform == null) return; //only reset dash ability when player lands on a green platform
+        if(redPlatform == null) return; //only reset dash ability when player lands on a red platform
+        AudioManager.instance.PlaySoundClip(_audioClipAux);
         _totalDashes = 1;
     }
 }
