@@ -8,6 +8,8 @@ public class GreenPlatform : State
     public delegate void OnToggle();
     public OnToggle onEnable;
     public OnToggle onDisable;
+    public delegate void OnGreen();
+    public event OnGreen onGreen;
     public GreenPlatform(StateMachineHandler stateMachineHandler) : base(stateMachineHandler)
     {
         _platformController = _stateMachineHandler as PlatformController;
@@ -22,6 +24,7 @@ public class GreenPlatform : State
         GameplayLogger.instance.Log($"Green activated", _platformController);
         GlobalMaterials.instance.ClearCoroutines();
         ActivateColor();
+        onGreen?.Invoke();
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Red", 0.3f);
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Blue", 0.3f);
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Green", 1f);

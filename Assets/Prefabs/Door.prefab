@@ -148,6 +148,6 @@ MonoBehaviour:
   _interactKey: 
   _dialoguesList:
   - Checkpoint saved!
-  _dialogueSpeed: 0.1
+  _dialogueSpeed: 0.05
   _speechAudio: {fileID: 0}
   _interactor: {fileID: 0}

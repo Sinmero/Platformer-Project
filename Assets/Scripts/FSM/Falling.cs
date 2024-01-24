@@ -34,7 +34,7 @@ public class Falling : InAir
 
         if (collisions.Length > 0)
         {
-            OnLanded(collisions[0]);
+            OnLanded?.Invoke((collisions[0]));
             PhysicsLogger.instance.Log($"Landed on {collisions[0].transform.name}", _playerController);
             _stateMachineHandler.ChangeState(_playerController._idle); //changing state to grounded when colliding with solid object with out bottom
         }

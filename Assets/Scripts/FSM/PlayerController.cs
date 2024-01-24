@@ -39,9 +39,9 @@ public class PlayerController : StateMachineHandler
         _moving = new Moving(this);
         _jumping = new Jumping(this);
 
-        _doubleJump = new DoubleJump(this);
-        _dashing = new Dashing(this);
-        _lowGravity = new LowGravity(this);
+        // _doubleJump = new DoubleJump(this);
+        // _dashing = new Dashing(this);
+        // _lowGravity = new LowGravity(this);
 
         _animationMaker = GetComponent<AnimationMaker>();
 

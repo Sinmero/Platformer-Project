@@ -8,6 +8,8 @@ public class RedPlatform : State
     public delegate void OnToggle();
     public OnToggle onEnable;
     public OnToggle onDisable;
+    public delegate void OnRed();
+    public event OnRed onRed;
     public RedPlatform(StateMachineHandler stateMachineHandler) : base(stateMachineHandler)
     {
         _platformController = _stateMachineHandler as PlatformController;
@@ -22,6 +24,7 @@ public class RedPlatform : State
         GameplayLogger.instance.Log($"Red activated", _platformController);
         GlobalMaterials.instance.ClearCoroutines();
         ActivateColor();
+        onRed?.Invoke();
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Blue", 0.3f);
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Green", 0.3f);
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Red", 1f);

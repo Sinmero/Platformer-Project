@@ -39,7 +39,7 @@ public class GlobalMaterials : MonoBehaviour
         _colorSplitter.SetFloat("_Green", 0);
         _colorSplitter.SetFloat("_Blue", 0);
         _redGlobal.SetFloat("_ShiftSlider", 0);
-        _blueGlobal.SetFloat("_ShiftSlider", 0);
+        _blueGlobal.SetFloat("_ShiftSlider", -0.1f);
         _greenGlobal.SetFloat("_ShiftSlider", 0);
     }
 
@@ -72,7 +72,6 @@ public class GlobalMaterials : MonoBehaviour
         int count = _coloutineList.Count;
         if(count == 0) return;
         for(int i = 0; i < count; i++) {
-            Debug.Log(i);
             StopCoroutine(_coloutineList[0]);
             _coloutineList.Remove(_coloutineList[0]);
         }

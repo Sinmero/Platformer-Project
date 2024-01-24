@@ -9,6 +9,8 @@ public class BluePlatform : State
     public delegate void OnToggle();
     public OnToggle onEnable;
     public OnToggle onDisable;
+    public delegate void OnBlue();
+    public event OnBlue onBlue;
     public BluePlatform(StateMachineHandler stateMachineHandler) : base(stateMachineHandler)
     {
         _platformController = _stateMachineHandler as PlatformController;
@@ -23,6 +25,7 @@ public class BluePlatform : State
         GameplayLogger.instance.Log($"Blue activated", _platformController);
         GlobalMaterials.instance.ClearCoroutines();
         ActivateColor();
+        onBlue?.Invoke();
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Red", 0.4f);
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Green", 0.5f);
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Blue", 1f);
