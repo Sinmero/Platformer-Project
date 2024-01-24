@@ -41,10 +41,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Blue: 0.3
-    - _Green: 1
+    - _Blue: 0
+    - _Green: 0
     - _Hue: 0
-    - _Red: 0.3
+    - _Red: 0
     - _ShiftSlide: 0.14
     m_Colors: []
   m_BuildTextureStacks: []
