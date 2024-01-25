@@ -15,12 +15,18 @@ public class GlobalMaterials : MonoBehaviour
     _lowGrav,
     _redGlobal,
     _greenGlobal,
-    _blueGlobal;
+    _blueGlobal,
+    _water,
+    _cameraFade;
     private List<Coroutine> _coloutineList =  new List<Coroutine>();
 
 
     void Awake()
     {
+        _cameraFade.SetFloat("_Radius", 9);
+        SmoothShaderTransition(_cameraFade, "_Radius", 12.5f, false, 0.1f);
+
+
         if (_globalMaterials != null && this != _globalMaterials)
         {
             Destroy(this);
@@ -32,15 +38,21 @@ public class GlobalMaterials : MonoBehaviour
 
         //reset all shaders
 
-        _bluePlatform.SetFloat("_OutlineTransition", 1);
-        _greenPlatform.SetFloat("_OutlineTransition", 1);
-        _redPlatform.SetFloat("_OutlineTransition", 1);
-        _colorSplitter.SetFloat("_Red", 0);
-        _colorSplitter.SetFloat("_Green", 0);
-        _colorSplitter.SetFloat("_Blue", 0);
-        _redGlobal.SetFloat("_ShiftSlider", 0);
-        _blueGlobal.SetFloat("_ShiftSlider", -0.1f);
-        _greenGlobal.SetFloat("_ShiftSlider", 0);
+        SetFloat(_redPlatform, "_OutlineTransition", 1);
+        SetFloat(_greenPlatform, "_OutlineTransition", 1);
+        SetFloat(_bluePlatform, "_OutlineTransition", 1);
+        SetFloat(_redGlobal,"_ShiftSlider", -0.1f);
+        SetFloat(_blueGlobal, "_ShiftSlider", -0.1f);
+        SetFloat(_greenGlobal, "_ShiftSlider", -0.1f);
+        SetFloat(_water, "_ShiftSlider", -0.1f);
+        SetFloat(_lowGrav, "_Alpha", 0);
+    }
+
+
+
+    private void SetFloat(Material mat, string valueName, float f){
+        if(mat == null) return;
+        mat.SetFloat(valueName, f);
     }
 
 

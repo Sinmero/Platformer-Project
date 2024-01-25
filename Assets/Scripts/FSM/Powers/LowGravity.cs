@@ -43,6 +43,7 @@ public class LowGravity : State
             _playercontroller._lowGravParticles.Stop();
             return;
         }
+        AudioManager.instance.PlaySoundClip(_audioClipAux);
         _rb.gravityScale = 1f;
         _playercontroller._jumpForce = 10;
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._lowGrav, "_Alpha", 1, false, 0.2f);

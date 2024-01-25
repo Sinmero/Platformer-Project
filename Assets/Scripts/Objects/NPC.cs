@@ -156,6 +156,14 @@ public class NPC : Interactable
 
 
 
+    public void ChangeName(string str) {
+        if(str == _interactableName) return;
+        _interactableName = str;
+        _interactor._dialogueUI.SetName(_interactableName);
+    }
+
+
+
 
     // not used for now
 

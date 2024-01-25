@@ -11,7 +11,7 @@ public class Dad : NPC
             "Hey James. How is school?",
             "Summer break huh? When i was your age i was unloading trucks at the train station after school.",
             "Instead of lazing around how about you look for a summer job?",
-            "Go find Helen at the town mall center. She owns a farm not far from here, plenty of work there.",
+            "Go find Helen at the town mall. She owns a farm not far from here, plenty of work there.",
             "Don't worry, i arranged everything.{SecondDialogue}"
         };
         dialoguesDictionary["startDialogue"] = startDialogue;

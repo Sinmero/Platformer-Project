@@ -148,5 +148,5 @@ MonoBehaviour:
   _interactKey: 
   _dialoguesList: []
   _dialogueSpeed: 0.05
-  _speechAudio: {fileID: 0}
+  _speechAudio: {fileID: 8300000, guid: 8360cb3b103403b4fb4a2011a6416205, type: 3}
   _interactor: {fileID: 0}

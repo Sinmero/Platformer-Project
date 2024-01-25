@@ -33,7 +33,10 @@ public class PlayerController : StateMachineHandler
     
 
 
-
+    public bool 
+    _debugDoubleJump = false,
+    _debugDashing = false,
+    _debugLowGrav = false;
 
     void Start()
     {
@@ -42,9 +45,9 @@ public class PlayerController : StateMachineHandler
         _moving = new Moving(this);
         _jumping = new Jumping(this, _audioClips[2]);
 
-        //_doubleJump = new DoubleJump(this, _audioClips[2], null, _audioClips[4]);
-        //_dashing = new Dashing(this, _audioClips[0], null, _audioClips[4]);
-        //_lowGravity = new LowGravity(this, null, null, _audioClips[4]);
+        if(_debugDoubleJump) _doubleJump = new DoubleJump(this, _audioClips[2], null, _audioClips[4]);
+        if(_debugDashing) _dashing = new Dashing(this, _audioClips[0], null, _audioClips[4]);
+        if(_debugLowGrav) _lowGravity = new LowGravity(this, null, null, _audioClips[4]);
 
 
         _animationMaker = GetComponent<AnimationMaker>();

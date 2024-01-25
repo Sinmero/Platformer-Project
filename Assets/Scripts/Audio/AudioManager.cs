@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySoundClip(AudioClip audioClip, float volume = 1.0f)
     {
-        Debug.Log(audioClip);
+        SoundLogger.instance.Log(audioClip, this);
         if (audioClip != null)
         {
             AudioSource audioSource = Instantiate(soundObject);
