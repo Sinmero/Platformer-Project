@@ -55,7 +55,7 @@ Material:
     m_Ints: []
     m_Floats:
     - OutlineWidth: 3.2
-    - _OutlineTransition: 1
+    - _OutlineTransition: 0
     m_Colors:
     - _OutlineColor: {r: 0.3151127, g: 0.754717, b: 0.17443931, a: 1}
     - _PrimaryColor: {r: 0.4117647, g: 1, b: 0.22352941, a: 0}
