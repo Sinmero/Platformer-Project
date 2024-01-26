@@ -1696,7 +1696,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 497124b9f908fa24d80d4464aa7948dd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4475b06f172b1a84a9df68895da44f5a, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -15043,6 +15043,9 @@ MonoBehaviour:
   _dashingParticles: {fileID: 817667722}
   _doubleJumpParticles: {fileID: 1623419699}
   _lowGravParticles: {fileID: 569499653}
+  _debugDoubleJump: 0
+  _debugDashing: 0
+  _debugLowGrav: 0
 --- !u!61 &1044996605
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15247,6 +15250,8 @@ MonoBehaviour:
   _redGlobal: {fileID: 2100000, guid: 84a35e5fbc5a1c2489d482bf4521914c, type: 2}
   _greenGlobal: {fileID: 2100000, guid: 966e7f7bee643264299691fa175ef472, type: 2}
   _blueGlobal: {fileID: 2100000, guid: e19c22f817ab22f4d8e2ad84aeef80a6, type: 2}
+  _water: {fileID: 0}
+  _cameraFade: {fileID: 0}
 --- !u!114 &1084730298
 MonoBehaviour:
   m_ObjectHideFlags: 0
