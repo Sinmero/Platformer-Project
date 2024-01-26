@@ -53,6 +53,7 @@ public class Jumping : InAir
     {
         if (_releasedJump)
         {
+            GameplayLogger.instance.Log("Released jump early", _playerController);
             _moveVector.y = _rb.velocity.y;
             _moveVector += Vector2.up * Physics2D.gravity.y * (lowJumpMulti - 1) * Time.deltaTime;
             _moveVector.x = _rb.velocity.x;

@@ -62,6 +62,7 @@ public class Dashing : State
         
         base.OnStateEnter();
         if (_totalDashes <= 0) {
+            GameplayLogger.instance.Log($"Out of dash charges.", _playerController);
             _playerController.ChangeState(_playerController._falling);
             return;
         }
