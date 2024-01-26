@@ -57,7 +57,7 @@ Material:
     - _ClampOutline: 0.15
     - _NoiseScale: 10
     - _ShiftSlide: 1
-    - _ShiftSlider: -0.1
+    - _ShiftSlider: 1
     m_Colors:
     - _OutlineColor: {r: 0.10431079, g: 0.745283, b: 0.08085619, a: 0}
     - _ShiftColor: {r: 1, g: 1, b: 1, a: 0}

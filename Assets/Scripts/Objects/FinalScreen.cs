@@ -6,7 +6,9 @@ using TMPro;
 public class FinalScreen : MonoBehaviour
 {
     [SerializeField] private Material _fadeMat;
-    [SerializeField] private TextMeshProUGUI _titleText;
+    [SerializeField] private TextMeshProUGUI 
+    _titleText,
+    _creditsText;
 
     
 
@@ -16,6 +18,7 @@ public class FinalScreen : MonoBehaviour
         _fadeMat.SetFloat("_Radius", 9);
         StartCoroutine(Transition(_fadeMat, "_Radius", 12.5f));
         StartCoroutine(PrintTitle());
+        StartCoroutine(PrintCredits());
     }
 
 
@@ -40,5 +43,13 @@ public class FinalScreen : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         Speech.instance.PrintText(title, _titleText, 0.2f);
+    }
+
+
+
+    private IEnumerator PrintCredits() {
+        yield return new WaitForSeconds(5);
+        var credits = "Game by Sinmero & BananaBoo <br><br><br> Thank you for playing!";
+        Speech.instance.PrintText(credits, _creditsText, 0.1f);
     }
 }
