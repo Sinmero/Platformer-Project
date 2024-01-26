@@ -8,7 +8,7 @@ public class TutorialDoor : CheckPoint
     {
         base.Init();
         List<string> startDialogue = new List<string>{"Leaving so soon? Remeber, you can always come back by pressing 'R'!{StartDialogue}"};
-        List<string> secondDialogue = new List<string>{"Back already?|Pause(1)| Take your time, kid."};
+        List<string> secondDialogue = new List<string>{"Back already?|Pause(1)| Take your time kid."};
         dialoguesDictionary.Add("secondDialogue", secondDialogue);
         dialoguesDictionary["startDialogue"] = startDialogue;
         _dialoguesList = startDialogue;

@@ -14,7 +14,7 @@ public class FinalDoor : NPC
     {
         base.Init();
         var startDialogue = new List<string> {
-            "It's time to go, James.",
+            "It's time to go James.",
             "Ready?",
             "{FinishGame}"
         };

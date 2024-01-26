@@ -8,8 +8,8 @@ public class CoffeeLady : NPC
     {
         base.Init();
         var startDialogue = new List<string> {
-            "You're Paul's boy, aren't you? Helen's looking for you.",
-            "You'll find her upstairs.",
+            "You are Paul's boy aren't you? Helen has been looking for you.",
+            "She is upstairs.",
             "To get there use your 'Up Arrow' key to <color=#AAAAAA>activate</color> <color=#009900>green</color> platform.{StartDialogueEnd}"
         };
         dialoguesDictionary["startDialogue"] = startDialogue;

@@ -9,10 +9,10 @@ public class Dad : NPC
         base.Init();
         var startDialogue = new List<string>{
             "Hey James. How is school?",
-            "Summer break, huh? When I was your age, I was unloading trucks at the train station after school.",
-            "Instead of lazing around, how about you look for a summer job?",
-            "Go find Helen at the town mall. She owns a farm not far from here and has plenty of work available.",
-            "Don't worry - I've already arranged everything.{SecondDialogue}"
+            "Summer break huh? When i was your age i was unloading trucks at the train station after school.",
+            "Instead of lazing around how about you look for a summer job?",
+            "Go find Helen at the town mall. She owns a farm not far from here, plenty of work there.",
+            "Don't worry, i arranged everything.{SecondDialogue}"
         };
         dialoguesDictionary["startDialogue"] = startDialogue;
         _dialoguesList = startDialogue;

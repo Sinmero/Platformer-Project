@@ -12,9 +12,9 @@ public class TutorialWisp : NPC
     {
         base.Init();
         List<string> startDialogue = new List<string> {
-            "Hello, Jamie!",
-            "Quite a climb ahead, huh?",
-            "You can use 'W' key to jump!|Pause(1)| Wait, what am I saying!? Surely, you already knew that.{SecondInteraction}"
+            "Hello Jamie!",
+            "Quite a climb ahead huh?",
+            "You can use 'W' key to jump!|Pause(1)| Wait what am i talking! Surely you already knew that.{SecondInteraction}"
         };
         dialoguesDictionary["startDialogue"] = startDialogue;
         _dialoguesList = startDialogue;

@@ -12,13 +12,13 @@ public class OldMan : NPC
     {
         base.Init();
         var startDialogue = new List<string> {
-            "What's wrong, young man? You're sulking, on a such beautiful day?",
-            "Look at all the nature around you!|Pause(0,5)| Smell that fresh air!",
-            "You won't get this in the city.",
+            "Whats wrong young man? Sulking on a such beautiful day.",
+            "Look at all the nature around you.|Pause(0,5)| Fresh air.",
+            "You won't see this in the city.",
             "No, no!|Pause(1)| You are doing it wrong. Take a deep breath and look.",
             "Deep breath...",
             ".|Pause(0,3)|.|Pause(0,3)|.|Pause(0,5)|{AddDoubleJump}", //World gains green color here!
-            "Now you understand!",
+            "Now you get it!",
             "{ChangeName()}<color=#AAAAAA>Double jump ability was unlocked.</color>",
             "{ChangeName()}<color=#AAAAAA>You gain a single double jump charge by landing on a </color><color=#009900>green</color><color=#AAAAAA> platform.</color>",
             "{ChangeName()}</color><color=#AAAAAA>Use 'W' key to double jump. Upon landing on other objects the charge is lost.</color>{SecondDialogue}"
