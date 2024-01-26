@@ -10,7 +10,6 @@ public class GlobalMaterials : MonoBehaviour
     _redPlatform,
     _greenPlatform,
     _bluePlatform,
-    _colorSplitter,
     _dashing,
     _lowGrav,
     _redGlobal,

@@ -25,9 +25,6 @@ public class RedPlatform : State
         GlobalMaterials.instance.ClearCoroutines();
         ActivateColor();
         onRed?.Invoke();
-        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Blue", 0.3f);
-        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Green", 0.3f);
-        GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._colorSplitter, "_Red", 1f);
     }
 
 

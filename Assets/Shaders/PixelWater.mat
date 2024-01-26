@@ -63,7 +63,7 @@ Material:
     - _NoiseScale: 15
     - _PixelsPerAsset: 16
     - _Rotation: -0.2
-    - _ShiftSlider: 1
+    - _ShiftSlider: -0.1
     - _TopOutline: -0.1
     m_Colors:
     - _OutlineColor: {r: 0.18431373, g: 0.6039216, b: 1, a: 0}
