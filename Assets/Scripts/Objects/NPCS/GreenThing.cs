@@ -17,8 +17,8 @@ public class GreenThing : NPC
     {
         base.Init();
         var startDialogue = new List<string> {
-            "Don't do through the <color=#ffee00>yellow</color> door James.",
-            "It will take you places you don't want to go.",
+            "Don't go through the <color=#ffee00>yellow</color> door, James.",
+            "It'll take you places that you don't want to go.",
             "{SecondDialogue}"
         };
         dialoguesDictionary["startDialogue"] = startDialogue;
@@ -29,8 +29,8 @@ public class GreenThing : NPC
 
     public void SecondDialogue() {
         var secondDialogue = new List<string> {
-            "You will be better off here.",
-            "Trust me James.",
+            "You'll be better off here.",
+            "Trust me, James.",
             "{ThirdDialogue}"
         };
         _gnome1.SetActive(false);
@@ -43,8 +43,8 @@ public class GreenThing : NPC
 
     public void ThirdDialogue() {
         var thirdDialogue = new List<string> {
-            "<color=#009900>Last chance James.</color>",
-            "<color=#009900>Don't say i didn't warn you.</color>",
+            "<color=#009900>Last chance, James!</color>",
+            "<color=#009900>Don't say I didn't warn you.</color>",
             "{RemoveGreen}"
         };
         ChangeName("<color=#009900>Green</color>");

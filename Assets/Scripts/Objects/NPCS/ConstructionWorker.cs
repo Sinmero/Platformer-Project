@@ -8,9 +8,9 @@ public class ConstructionWorker : NPC
     {
         base.Init();
         var startDialogue = new List<string> {
-            "See that <color=#990000>red</color> platform little guy?",
+            "See that <color=#990000>red</color> platform, little guy?",
             "We use 'Left Arrow' key to <color=#AAAAAA>activate</color> <color=#990000>red</color> platforms.",
-            "Give it a try kid.{StartDialogueEnd}"
+            "Give it a try, kid!{StartDialogueEnd}"
         };
         dialoguesDictionary["startDialogue"] = startDialogue;
         _dialoguesList = startDialogue;
