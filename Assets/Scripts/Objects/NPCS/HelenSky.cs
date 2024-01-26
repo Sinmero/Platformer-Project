@@ -21,7 +21,7 @@ public class HelenSky : NPC
             ".|Pause(0,5)|.|Pause(0,5)|.{AddLowGrav}", //world gains blue color here
             "{ChangeName()}<color=#AAAAAA>Low gravity ability was unlocked.</color>",
             "<color=#AAAAAA>You gain low gravity when standing on a </color><color=#1747c2>blue</color> <color=#AAAAAA>platform.</color>",
-            "<color=#AAAAAA>Use Low gravity is lost upon landing on other objects.</color>{SecondDialogue}"
+            "<color=#AAAAAA>Low gravity is lost upon landing on other objects.</color>{SecondDialogue}"
         };
         dialoguesDictionary["startDialogue"] = startDialogue;
         _dialoguesList = startDialogue;

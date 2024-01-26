@@ -41,6 +41,7 @@ public class OldMan : NPC
     public void AddDoubleJump(){
         var doubleJump = new DoubleJump(_playerController, _playerController._audioClips[2]);
         _playerController._doubleJump = doubleJump;
+        AudioManager.instance.TriggerPlaySoundtrack();
 
         GlobalMaterials.instance.SmoothShaderTransition(GlobalMaterials.instance._greenGlobal, "_ShiftSlider", 1, false , 0.01f);
     }

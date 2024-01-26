@@ -11,7 +11,7 @@ public class Helen : NPC
     {
         base.Init();
         var startDialogue = new List<string> {
-            "James! I'm Helen. Your dad asked me to take care of you for the summer.",
+            "James! I've been waiting for you. Your dad asked me to take care of you for the summer.",
             "We are going to my farm kid! Lots of cool stuff to do there!",
             "Pack your things, we are leaving today.",
             "Go through the <color=#ffee00>yellow</color> door to the left when you are ready.",

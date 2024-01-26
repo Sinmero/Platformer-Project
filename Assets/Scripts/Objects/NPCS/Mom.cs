@@ -9,7 +9,8 @@ public class Mom : NPC
         base.Init();
         var startDialogue = new List<string> {
             "I will be stuck at work until late tomorrow.|Pause(1)| What a mess.",
-            "There is some pizza in the fridge, don't forget to brush your teeth and don't stay up late.{SecondDialogue}"
+            "Don't forget to brush your teeth and don't stay up late.",
+            "There is some pizza in the fridge.{SecondDialogue}"
         };
 
         dialoguesDictionary["startDialogue"] = startDialogue;
