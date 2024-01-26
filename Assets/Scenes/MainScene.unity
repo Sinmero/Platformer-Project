@@ -8901,7 +8901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundObject: {fileID: 5094799124396699092, guid: 00a548a056ce7564999e89a02acb6d7d, type: 3}
   levelAmbience: {fileID: 1611472926}
-  AmbienceFadeOffsetX: 5
+  AmbienceFadeOffsetX: 6
   levelSoundtrack: {fileID: 74960064}
   collider_triggerAmbienceFade: {fileID: 775214812}
   collider_triggerSoundtrack: {fileID: 60738565}
@@ -16938,9 +16938,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b2d8a75663a47554aa0d9b2097e40878, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 32b5323eb9eb0f045ae49c20fc978e1a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.516
+  m_Volume: 0.759
   m_Pitch: 1
   Loop: 0
   Mute: 0
