@@ -8,9 +8,10 @@ public class Controls : MonoBehaviour
     private static Controls _controls;
     public static Controls instance { get { return _controls; } }
     private static controlKeys _keys;
-    public static controlKeys keys {get {return _keys;}}
+    public static controlKeys keys { get { return _keys; } }
     private static controlKeys _defaultKeys = new controlKeys(KeyCode.W, KeyCode.A, KeyCode.D, KeyCode.Z, KeyCode.X, KeyCode.C, KeyCode.V, KeyCode.E, KeyCode.LeftShift, KeyCode.R);
     private static controlKeys _customkeys = new controlKeys(KeyCode.W, KeyCode.A, KeyCode.D, KeyCode.LeftArrow, KeyCode.UpArrow, KeyCode.RightArrow, KeyCode.DownArrow, KeyCode.E, KeyCode.Space, KeyCode.R);
+    private static controlKeys _lockedControls = new controlKeys(KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.E, KeyCode.None, KeyCode.None);
 
 
 
@@ -18,16 +19,34 @@ public class Controls : MonoBehaviour
     {
         _keys = _defaultKeys;
 
-        if(_controls == null) _controls = this;
+        if (_controls == null) _controls = this;
 
         if (_isArrowControls) _keys = _customkeys;
+    }
+
+
+
+    public static void LockControls()
+    {
+        _keys = _lockedControls;
+        SystemLogger.instance.Log($"Controls locked.", null);
+    }
+
+
+
+    public static void UnlockControls() {
+        _keys = _customkeys;
+        SystemLogger.instance.Log($"Controls unlocked.", null);
     }
 }
 
 
-public struct controlKeys 
+
+
+public struct controlKeys
 {
-    public controlKeys(KeyCode jump, KeyCode left, KeyCode right, KeyCode red, KeyCode green, KeyCode blue, KeyCode grey, KeyCode interact, KeyCode dash, KeyCode returnToCheckpoint) {
+    public controlKeys(KeyCode jump, KeyCode left, KeyCode right, KeyCode red, KeyCode green, KeyCode blue, KeyCode grey, KeyCode interact, KeyCode dash, KeyCode returnToCheckpoint)
+    {
         _jump = jump;
         _left = left;
         _right = right;

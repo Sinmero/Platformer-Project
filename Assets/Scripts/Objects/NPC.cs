@@ -42,7 +42,7 @@ public class NPC : Interactable
     public override void Init()
     {
         base.Init();
-        // onDialogueEnd += () => {controls.isMovementLocked = false;};
+        onDialogueEnd += () => {Controls.UnlockControls();};
         var startDialogue = new List<string>{
         "Hello, i am " + _interactableName + " this is a test dialogue.",
         "You should not be seeing this."
@@ -63,7 +63,7 @@ public class NPC : Interactable
     {
         if (_interactor._dialogueUI._canProceed)
         {
-            // controls.isMovementLocked = true;
+            Controls.LockControls();
             base.OnInteract(interactor);
             if (lastSpokeTo != this)
             // { //not used
