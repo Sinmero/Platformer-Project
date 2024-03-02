@@ -144,6 +144,7 @@ public class NPC : Interactable
         base.OnLeave(interactor);
         Speech.instance.StopCoroutine();
         CloseDialogueWindow();
+        onDialogueEnd?.Invoke(); //prevent the controls from getting locked
     }
 
 

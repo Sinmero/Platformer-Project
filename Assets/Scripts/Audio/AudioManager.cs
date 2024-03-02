@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour
     private GameObject CharacterRef;
     private Vector3 AmbienceTriggerEventLocation;
     private bool IsAmbienceFading = false;
+    [SerializeField] private GameSettings _gameSettings;
 
     private void Awake()
     {
@@ -25,6 +26,12 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             levelAmbience_initVolume = levelAmbience.volume;
+        }
+
+        if (_gameSettings != null)
+        {
+            _gameSettings.OnMusicVolumeChange += ChangeMusicVolume;
+            GameSystems.instance.onSceneChange += ClearOnSceneChange;
         }
     }
 
@@ -34,13 +41,14 @@ public class AudioManager : MonoBehaviour
 
         float AbsOffset = AmbienceTriggerEventLocation.x + AmbienceFadeOffsetX;
         float newVolume = Mathf.InverseLerp(AbsOffset, AmbienceTriggerEventLocation.x, CharacterRef.transform.position.x);
-        levelAmbience.volume = Mathf.Lerp(0.0f, levelAmbience_initVolume, newVolume);
+        levelAmbience.volume = Mathf.Lerp(0.0f, levelAmbience_initVolume, newVolume) * _gameSettings._musicVolume;
 
-        if (newVolume <= 0) {
+        if (newVolume <= 0)
+        {
             IsAmbienceFading = false;
             levelAmbience.Stop();
         }
-        
+
     }
 
     public void PlaySoundClip(AudioClip audioClip, float volume = 1.0f)
@@ -50,13 +58,13 @@ public class AudioManager : MonoBehaviour
         {
             AudioSource audioSource = Instantiate(soundObject);
             audioSource.clip = audioClip;
-            audioSource.volume = volume;
+            audioSource.volume = volume * _gameSettings._soundEffectsVolume;
             audioSource.Play();
 
             float clipLength = audioSource.clip.length;
             Destroy(audioSource.gameObject, clipLength);
         }
-        
+
     }
 
     public void TriggerAmbienceFalloff(GameObject character)
@@ -76,5 +84,27 @@ public class AudioManager : MonoBehaviour
 
         if (levelSoundtrack.isPlaying) { return; }
         levelSoundtrack.Play();
+    }
+
+
+
+    public void ChangeVolume(AudioSource audioSource, float volume)
+    {
+        audioSource.volume = volume;
+    }
+
+
+
+    public void ChangeMusicVolume()
+    {
+        ChangeVolume(levelSoundtrack, _gameSettings._musicVolume);
+        ChangeVolume(levelAmbience, _gameSettings._musicVolume);
+    }
+
+
+
+    public void ClearOnSceneChange()
+    {
+        _gameSettings.OnMusicVolumeChange -= ChangeMusicVolume;
     }
 }

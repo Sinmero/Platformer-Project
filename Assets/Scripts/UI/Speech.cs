@@ -11,7 +11,7 @@ public class Speech : MonoBehaviour
     public bool _isPaused = false;
     public float _textSpeed = 0.05f, _pitchMin = 0.975f, _pitchMax = 1.025f;
     private static Speech _speech;
-    public static Speech instance {get {return _speech;}}
+    public static Speech instance { get { return _speech; } }
     public Type _thisType;
     public NPC _thisNPC;
     private TextMeshProUGUI _currentTextMesh;
@@ -96,7 +96,7 @@ public class Speech : MonoBehaviour
             else //handle typing
             {
                 if (Time.time < _pauseTimeout) yield return new WaitForSeconds(_pauseTime); //pause if needed
-                
+
                 thisTextMesh.text += cr;
                 if (_regex.IsMatch(cr.ToString())) //if char is text and not symbol do things
                 {
@@ -197,8 +197,9 @@ public class Speech : MonoBehaviour
 
 
 
-    public void StopCoroutine(){
-        if(_currentCoroutine != null) StopCoroutine(_currentCoroutine);
+    public void StopCoroutine()
+    {
+        if (_currentCoroutine != null) StopCoroutine(_currentCoroutine);
         _isPrinting = false;
     }
 
@@ -206,7 +207,7 @@ public class Speech : MonoBehaviour
 
     public void ReduceSpeed(string speed = "0,05")
     {
-        float s = float.Parse(speed);
+        float s = float.Parse(WebGLCheck(speed));
         _textSpeed += s;
     }
 
@@ -214,15 +215,15 @@ public class Speech : MonoBehaviour
 
     public void IncreaseSpeed(string speed)
     {
-        float s = float.Parse(speed);
+        float s = float.Parse(WebGLCheck(speed));
         _textSpeed -= s;
     }
 
 
     public void ReducePitch(string pmin = "0,05", string pmax = "0,05")
     {
-        float max = float.Parse(pmax);
-        float min = float.Parse(pmin);
+        float max = float.Parse(WebGLCheck(pmax));
+        float min = float.Parse(WebGLCheck(pmin));
         _pitchMax -= max;
         _pitchMin -= min;
     }
@@ -231,8 +232,8 @@ public class Speech : MonoBehaviour
 
     public void IncreasePitch(string pmin = "0,05", string pmax = "0,05")
     {
-        float max = float.Parse(pmax);
-        float min = float.Parse(pmin);
+        float max = float.Parse(WebGLCheck(pmax));
+        float min = float.Parse(WebGLCheck(pmin));
         _pitchMax += max;
         _pitchMin += min;
     }
@@ -241,8 +242,18 @@ public class Speech : MonoBehaviour
 
     public void Pause(string pauseTimeString = "1") //pauses for a second
     {
-        float t = float.Parse(pauseTimeString);
+        float t = float.Parse(WebGLCheck(pauseTimeString));
         _pauseTimeout = Time.time + t;
         _pauseTime = t;
+    }
+
+
+
+    public string WebGLCheck(string val) { //this can cause problems with float conversion.
+        if (GameSystems.instance._isWebGL) //webGL version can't float.parse string with "," properly so we replace "," with "."
+        {
+            return val.Replace(",", ".");
+        }
+        return val;
     }
 }

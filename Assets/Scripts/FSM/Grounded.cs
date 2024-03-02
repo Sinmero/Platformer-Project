@@ -44,8 +44,9 @@ public class Grounded : State
 
         if (Input.GetKeyDown(Controls.keys._jump))
         {
-            _rb.AddForce(Vector2.up * _playerController._jumpForce, ForceMode2D.Impulse);
             _stateMachineHandler.ChangeState(_playerController._jumping);
+            _rb.AddForce(Vector2.up * _playerController._jumpForce, ForceMode2D.Impulse);
+            return;
         }
         if (Input.GetKey(Controls.keys._left))
         {
@@ -87,7 +88,7 @@ public class Grounded : State
 
         Debug.DrawRay(_playerController.transform.position - new Vector3(0, _colliderSize.y * 0.5f, 0), new Vector3(0, -0.1f, 0), Color.red);
 
-        var collisionList = collisions.ToList().FindAll(x => x.collider.name != _stateMachineHandler.name);
+        // var collisionList = collisions.ToList().FindAll(x => x.collider.name != _stateMachineHandler.name);
 
         if (collisions.Length == 0)
         { //if we dont collide with solids

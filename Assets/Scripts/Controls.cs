@@ -9,9 +9,9 @@ public class Controls : MonoBehaviour
     public static Controls instance { get { return _controls; } }
     private static controlKeys _keys;
     public static controlKeys keys { get { return _keys; } }
-    private static controlKeys _defaultKeys = new controlKeys(KeyCode.W, KeyCode.A, KeyCode.D, KeyCode.Z, KeyCode.X, KeyCode.C, KeyCode.V, KeyCode.E, KeyCode.LeftShift, KeyCode.R);
-    private static controlKeys _customkeys = new controlKeys(KeyCode.W, KeyCode.A, KeyCode.D, KeyCode.LeftArrow, KeyCode.UpArrow, KeyCode.RightArrow, KeyCode.DownArrow, KeyCode.E, KeyCode.Space, KeyCode.R);
-    private static controlKeys _lockedControls = new controlKeys(KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.E, KeyCode.None, KeyCode.None);
+    private static controlKeys _defaultKeys = new controlKeys(KeyCode.W, KeyCode.A, KeyCode.D, KeyCode.Z, KeyCode.X, KeyCode.C, KeyCode.V, KeyCode.E, KeyCode.LeftShift, KeyCode.R, KeyCode.Escape);
+    private static controlKeys _customkeys = new controlKeys(KeyCode.W, KeyCode.A, KeyCode.D, KeyCode.LeftArrow, KeyCode.UpArrow, KeyCode.RightArrow, KeyCode.DownArrow, KeyCode.E, KeyCode.Space, KeyCode.R, KeyCode.Escape);
+    private static controlKeys _lockedControls = new controlKeys(KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.None, KeyCode.E, KeyCode.None, KeyCode.None, KeyCode.Escape);
 
 
 
@@ -45,7 +45,7 @@ public class Controls : MonoBehaviour
 
 public struct controlKeys
 {
-    public controlKeys(KeyCode jump, KeyCode left, KeyCode right, KeyCode red, KeyCode green, KeyCode blue, KeyCode grey, KeyCode interact, KeyCode dash, KeyCode returnToCheckpoint)
+    public controlKeys(KeyCode jump, KeyCode left, KeyCode right, KeyCode red, KeyCode green, KeyCode blue, KeyCode grey, KeyCode interact, KeyCode dash, KeyCode returnToCheckpoint, KeyCode settingsMenu)
     {
         _jump = jump;
         _left = left;
@@ -57,6 +57,7 @@ public struct controlKeys
         _grey = grey;
         _dash = dash;
         _returnToCheckpoint = returnToCheckpoint;
+        _settingsMenu = settingsMenu;
     }
 
     public KeyCode _jump;
@@ -69,4 +70,5 @@ public struct controlKeys
     public KeyCode _interact;
     public KeyCode _dash;
     public KeyCode _returnToCheckpoint;
+    public KeyCode _settingsMenu;
 }

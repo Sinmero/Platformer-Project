@@ -34,6 +34,7 @@ public class GreenThing : NPC
             "{ThirdDialogue}"
         };
         _gnome1.SetActive(false);
+        onDialogueEnd?.Invoke();
         transform.position = _pos1.position;
         dialoguesDictionary.Add("secondDialogue", secondDialogue);
         _dialoguesList = secondDialogue;
@@ -49,6 +50,7 @@ public class GreenThing : NPC
         };
         ChangeName("<color=#009900>Green</color>");
         _gnome2.SetActive(false);
+        onDialogueEnd?.Invoke();
         transform.position = _pos2.position;
         dialoguesDictionary.Add("thirdDiaogue", thirdDialogue);
         _dialoguesList = thirdDialogue;
@@ -57,6 +59,7 @@ public class GreenThing : NPC
 
 
     public void RemoveGreen(){
+        onDialogueEnd?.Invoke();
         gameObject.SetActive(false);
     }
 }

@@ -21,7 +21,6 @@ public class Jumping : InAir
     public override void Execute()
     {
         base.Execute();
-        ReleaseJumpEarly();
 
         if (_rb.velocity.y <= 0)
         { // cant break jump if already falling
@@ -32,11 +31,13 @@ public class Jumping : InAir
         { //if the player releases jump button break the jump
             _releasedJump = true;
         }
+        ReleaseJumpEarly();
     }
 
     public override void OnStateEnter()
     {
         base.OnStateEnter();
+        _releasedJump = false;
         AudioManager.instance.PlaySoundClip(_audioClipOnEnter);
     }
 

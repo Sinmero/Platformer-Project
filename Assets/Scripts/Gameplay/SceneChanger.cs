@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SceneChanger : Interactable
 {
@@ -13,6 +12,6 @@ public class SceneChanger : Interactable
     {
         base.OnInteract(interactor);
         if(_sceneName == null) return;
-        SceneManager.LoadScene(_sceneName);
+        GameSystems.instance.ChangeScene(_sceneName);
     }
 }
